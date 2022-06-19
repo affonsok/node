@@ -1,0 +1,22 @@
+{
+  "name": "pergunta-resposta-nodejs",
+  "version": "1.0.0",
+  "description": "gamma academy estudos",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/affonsok/node.git"
+  },
+  "author": "Affonso Kopmann",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/affonsok/node/issues"
+  },
+  "homepage": "https://github.com/affonsok/node#readme",
+  "dependencies": {
+    "query-string": "^7.1.1"
+  }
+}
