@@ -23,13 +23,13 @@ const server = http.createServer((req, res) => {
 
   // criar usuario      -  Atualizar usuario 
     if(urlparse.pathname == '/criar-usuario') {
+
     // salvar as informacoes (em arquivo)    
     fs.writeFile('users/' + params.id + '.txt', JSON.stringify(params), function (err) {
 
       console.log('Salvo!');
-      resposta = "usuario criado com sucesso";
+      resposta = "usuario criado/atualizado com sucesso";
 
-      resposta = err ?  "usuario criado" : "usuario atualizado";
 
       res.statusCode = 200;
       res.setHeader('Content-Type', 'text/plain');
@@ -56,7 +56,7 @@ const server = http.createServer((req, res) => {
  
         console.log('usuario deletado!');
 
-        resposta = err ?  "usuario não encontrado" : "usuario removido";
+        resposta = err ?  "usuario nao encontrado" : "usuario removido";
 
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/plain');
