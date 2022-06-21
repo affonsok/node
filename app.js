@@ -25,13 +25,17 @@ const server = http.createServer((req, res) => {
     if(urlparse.pathname == '/criar-usuario') {
     // salvar as informacoes (em arquivo)    
     fs.writeFile('users/' + params.id + '.txt', JSON.stringify(params), function (err) {
-      if (err) throw err;
+
       console.log('Salvo!');
+      resposta = "usuario criado com sucesso";
+
+      resposta = err ?  "usuario criado" : "usuario atualizado";
+
       res.statusCode = 200;
       res.setHeader('Content-Type', 'text/plain');
       res.end(resposta);
     });    
-    resposta = "usuario criado com sucesso";
+
 
     }   
     // Selecionar usuario
@@ -46,26 +50,23 @@ const server = http.createServer((req, res) => {
       });
 
     }
-
-
-  // Selecionar usuario
-
-
-
-
   // remover usuario
+  else if (urlparse.pathname == '/remover-usuario') {
+        fs.unlink('users/' + params.id + '.txt', function (err) {
+ 
+        console.log('usuario deletado!');
 
+        resposta = err ?  "usuario não encontrado" : "usuario removido";
 
-});
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'text/plain');
+        res.end(resposta);
+      });
+    };
 
-
+  });
 
 // execução
 server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
-
-
-
-// http://localhost:3000/criar-usuario?nome=affonso&idade=39&id=1
-// http://localhost:3000/selecionar-usuario?id=1
